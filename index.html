@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Two</title>
+    <link rel="stylesheet" href="assets\css\bootstrap.css">
+</head>
+<body>
+
+<section class="container">
+    <h1>Counter.!</h1>
+    <div class="row">
+        <div class="col-4">
+            <input id="txt" class="form-control" type="number" placeholder="Input a Number" value="0">
+            <button id="btnStart" class="btn btn-primary mt-2">Start</button>
+            <button id="btnStop" class="btn btn-danger mt-2">Stop</button>
+            <button id="btnMinus" class="btn btn-warning mt-2">-</button>
+            <button id="btnIncrement" class="btn btn-success mt-2">+</button>
+        </div>
+        <div class="offset-1 col-3 shadow overflow-x-hidden d-flex justify-content-center align-items-center"
+             style="height: 50vh">
+            <h1 id="display" class="text-danger" style="font-size: 8em">0</h1>
+        </div>
+    </div>
+</section>
+
+
+<script>
+
+    const startbtn = document.querySelector("#btnStart");
+    const stopbtn = document.querySelector("#btnStop");
+    const minusbtn = document.querySelector("#btnMinus");
+    const plusbtn = document.querySelector("#btnIncrement");
+    let display = document.querySelector("#display");
+    let txt;
+    let interval;
+    let bool = true;
+
+    startbtn.addEventListener("click",function (){
+        bool = true;
+        txt = document.querySelector("#txt").value;
+        if (txt === "0"){
+        }else{
+            display.innerText = txt;
+        }
+        interval = setInterval(function (){
+            if (bool){
+                display.innerText = parseInt(display.innerText)+1;
+            }
+        },1000);
+    });
+
+    stopbtn.addEventListener("click",function (){
+        bool = false;
+        clearInterval(interval);
+    });
+
+    minusbtn.addEventListener("click",function (){
+       display.innerText = parseInt(display.innerText)-1;
+    });
+
+    plusbtn.addEventListener("click",function (){
+        display.innerText = parseInt(display.innerText)+1;
+    });
+
+</script>
+
+</body>
+</html>
